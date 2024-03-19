@@ -21,6 +21,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal-zinkat": "^1.1.2",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
