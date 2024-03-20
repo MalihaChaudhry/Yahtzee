@@ -159,26 +159,21 @@ const RuleRows = () => {
     const copyTallyLower = { ...tallyLower };
     copyTallyLower['chance'].val = diceSum;
     copyTallyLower['chance'].clicked = true;
+    setTallyLower(copyTallyLower);
+
     resetDice();
   };
 
   useEffect(() => {
-    const upperTotal =
-      tallyUpper[1].val +
-      tallyUpper[2].val +
-      tallyUpper[3].val +
-      tallyUpper[4].val +
-      tallyUpper[5].val +
-      tallyUpper[6].val;
-    const lowerTotal =
-      tallyLower['threeOfAKind'].val +
-      tallyLower['fourOfAKind'].val +
-      tallyLower['fullHouse'].val +
-      tallyLower['smallStraight'].val +
-      tallyLower['largeStraight'].val +
-      tallyLower['yahtzee'].val +
-      tallyLower['chance'].val;
-    setTotalScore(upperTotal + lowerTotal);
+    const upperTotal = Object.values(tallyUpper)
+      .map((obj) => obj.val)
+      .reduce((sum, num) => sum + num, 0);
+    const lowerTotal = Object.values(tallyLower)
+      .map((obj) => obj.val)
+      .reduce((sum, num) => sum + num, 0);
+
+    const bonus = upperTotal > 62 ? 35 : 0;
+    setTotalScore(upperTotal + lowerTotal + bonus);
   }, [tallyUpper, tallyLower, setTotalScore]);
 
   useEffect(() => diceValueCounter(), [dice, diceValueCounter]);

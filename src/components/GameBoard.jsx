@@ -56,7 +56,7 @@ const GameBoard = () => {
       )}
       <ScoreCard />
       <button onClick={toggleModal}>Game Rules</button>
-      <div isOpen={isOpen} onClose={toggleModal}>
+      {/* <div isOpen={isOpen} onClose={toggleModal}>
         <ul className='modal-container'>
           <li>Ones</li>
           <p>Points scored: Receive 1 point for each 1 rolled</p>
@@ -97,7 +97,7 @@ const GameBoard = () => {
           <p>Needed to Score: Any combination of dice</p>
           <p>Points scored: Sum of all dice</p>
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };
